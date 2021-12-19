@@ -3,33 +3,55 @@ import { Metrics } from "../../Themes";
 
 export const styles = StyleSheet.create({
     container: {
-      padding:  Platform.OS==='android'? Metrics.baseMargin*2: Metrics.baseMargin,
-      paddingTop: Platform.OS==='ios'?40:0,
       backgroundColor: '#000',
       flex:1,
     },
     container_logo:{ 
       fontWeight: 'bold', 
-      fontSize: 14,
-      paddingVertical: Metrics.baseMargin*2,
+      fontSize: 13,
+      paddingTop:26,
+      paddingBottom:27,
+      paddingLeft:22,
+      height:70,
+      // backgroundColor:'red'
     },
     text:{
       color:'#fff',
+      height:15,
+      width: 35
     },
     textSearch:{
       color:'#fff',
-      fontSize: 24
+      fontSize: 24,
+      marginLeft:20
+    },
+    textSearch3:{
+      color:'#fff',
+      fontSize: 24,
+      marginHorizontal:20,
+      marginTop:20
     },
     textSearch2:{
       color:'#000',
       fontSize: 16,
-      padding: 12
+      height:40,
+      textAlign:'center',
+      textAlignVertical:'center',
+      backgroundColor:'#fff',
+      borderRadius: 4,
+      marginTop: 60,
+      marginBottom: 120,
+      marginHorizontal: 20
     },
     input:{
       height: 60,
-      marginVertical: Metrics.baseMargin * 2,
+      marginTop:16,
       borderWidth: 3,
-      padding: Metrics.baseMargin*2,
+      paddingLeft:18,
+      paddingBottom:19,
+      paddingTop:20,
+      paddingRight:18,
+      marginHorizontal: 20,
       borderRadius: 4,
       color: '#fff',
       borderColor:'#FF9B33'
@@ -42,11 +64,18 @@ export const styles = StyleSheet.create({
     },
     result:{
       flexDirection:'row',
+      marginHorizontal:20,
+      marginTop:18
     },
     text_item_result:{
       color:'#fff',
       marginTop: 36,
-      marginLeft: Metrics.baseMargin
+    },
+    text_item_result1:{
+      color:'#fff',
+      marginTop: 36,
+      marginLeft: Metrics.baseMargin,
+      marginLeft:-10
     },
     text_index:{
       color:'#fff',
@@ -82,28 +111,28 @@ export const styles = StyleSheet.create({
       marginTop:- Metrics.baseMargin * 3,
       marginLeft: - Metrics.baseMargin/2,
       justifyContent:'space-between',
-      alignItems:'center'
+      alignItems:'center',
+      marginRight:20,
     },
     index_1: {
       flexDirection:'row',
       justifyContent:'space-between',
       alignItems:'center',
       width: Metrics.screenWidth*0.625,
-      paddingLeft:12
+
+    },
+    index_2: {
+      flexDirection:'row',
+      justifyContent:'space-between',
+      alignItems:'center',
+      marginHorizontal:20, 
+      marginTop: -18
     },
     divider:{
       borderBottomColor: '#fff',
       borderBottomWidth: 1,
       opacity:0.1,
-      marginTop: Metrics.screenHeight*0.2
-    },
-    submit: {
-      width: Metrics.screenWidth*0.9,
-      justifyContent:'center',
-      alignItems:'center',
-      backgroundColor:'#fff',
-      marginTop: Metrics.screenHeight*0.15,
-      borderRadius: 4
+      height: 221
     },
     bottom_bar: {
       flexDirection:'row',
@@ -112,7 +141,7 @@ export const styles = StyleSheet.create({
       position:'absolute',
       bottom:0,
       width: Metrics.screenWidth,
-      height: Metrics.screenHeight*0.075,
+      height: 66,
       backgroundColor:'#181818'
     },
     icon_bottom_bar: {

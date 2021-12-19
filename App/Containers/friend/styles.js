@@ -3,8 +3,9 @@ import { Metrics } from "../../Themes";
 
 export const styles = StyleSheet.create({
     container: {
-      padding:  Metrics.baseMargin*2,
+    //   padding:  Metrics.baseMargin*2,
       backgroundColor: '#181818',
+      flex: 1
     },
     back :{
         height:40,
@@ -13,13 +14,21 @@ export const styles = StyleSheet.create({
         marginLeft: -Metrics.baseMargin
     },
     text: {
-        color:'white'
+        color:'white',
+        width:  Metrics.screenWidth*0.5,
+        height:32,
+        textAlign:'center',
+    },
+    picked: {
+        fontWeight:'bold',
+        borderBottomWidth:2,
+        borderBottomColor:'white',
     },
     header: {
         flexDirection:'row',
-        alignContent:'center',
         alignItems:'center',
-        marginTop: 12
+        marginTop: 32,
+        justifyContent:'space-between'
     },
     h1: {
         fontSize: 24
@@ -56,12 +65,32 @@ export const styles = StyleSheet.create({
         padding: 8
     },
     item_contain: {
-        backgroundColor: 'rgba(214, 213, 203, 0.3)',
-        height:150,
-        width: 150,
+        backgroundColor: 'transparent',
         borderRadius:10,
-        marginBottom: 12,
-        flexDirection:'column',
-        justifyContent:'flex-end'
+        // marginBottom: 6,
+    },
+    following:{
+        backgroundColor:'white',
+        color:'black',
+        borderRadius: 20,
+        width: 76,
+        height:28,
+        fontSize:12,
+        textAlign: 'center',
+        textAlignVertical: 'center',
+        fontWeight:'bold'
+    },
+    not_follow:{
+        backgroundColor:'black',
+        color:'white',
+        borderRadius: 20,
+        width: 76,
+        height:28,
+        fontSize:12,
+        textAlign: 'center',
+        textAlignVertical: 'center',
+        fontWeight:'bold',
+        borderWidth: 1,
+        borderColor: 'white'
     }
   });

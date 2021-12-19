@@ -47,7 +47,7 @@ export function ResultPage(props) {
                 data={data}
                 ListEmptyComponent={<View><Text>Data Not Found</Text></View>}
                 onEndReached={({ distanceFromEnd }) => {
-                    console.log(`distanceFromEnd`, distanceFromEnd)
+                    // console.log(`distanceFromEnd`, distanceFromEnd)
                     Fetch()
                 }}
                 renderItem={({item}) =>{

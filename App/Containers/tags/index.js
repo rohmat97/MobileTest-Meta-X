@@ -6,7 +6,6 @@ import { styles } from "./styles";
 
 import API from '../../Services/Api'
 import { Image } from "react-native-elements";
-import { F } from "ramda";
 
 const api = API.create()
 export function TagsPage(props) {

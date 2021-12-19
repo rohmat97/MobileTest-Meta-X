@@ -4,7 +4,7 @@ import { Metrics } from "../../Themes";
 export const styles = StyleSheet.create({
     container: {
       padding:  Metrics.baseMargin*2,
-      backgroundColor: '#000',
+      backgroundColor: '#181818',
     },
     back :{
         height:40,

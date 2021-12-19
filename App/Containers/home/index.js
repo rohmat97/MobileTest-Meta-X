@@ -6,6 +6,8 @@ import Slider from "react-native-slider";
 import { styles } from './styles';
 import images from "../../Themes/Images";
 import API from '../../Services/Api'
+import { Metrics } from "../../Themes";
+import { ScrollView } from "react-navigation";
 
 
 const api = API.create()
@@ -42,96 +44,100 @@ export function HomePage(props) {
     }
     return(
         <View style={styles.container}>
-            <LinearTextGradient
-                style={styles.container_logo}
-                locations={[0, 1]}
-                colors={['#FFD25F', '#FF5C01']}
-                start={{ x: 1, y: 0 }}
-                end={{ x: 0, y: 0 }}
-                >
-                <Text style={styles.text}>LOGO</Text>
-            </LinearTextGradient>
-            <Text style={styles.textSearch}>Search</Text>
-            <TextInput
-                style={active?[styles.input]:[styles.input,styles.empty_text,styles.empty_border_color]}
-                onChangeText={setsearch}
-                value={search}
-                placeholder="Keyword"
-                placeholderTextColor={'#fff'}
-                numberOfLines={1}
-                onTouchStart={()=> setactive(true)}
-                onEndEditing={()=> setactive(false)}
-            />
-             {/* <TextInput
-                style={active?[styles.input]:[styles.input,styles.empty_text,styles.empty_border_color]}
-                onChangeText={setsearch}
-                value={search}
-                placeholder="Keyword"
-                placeholderTextColor={'#fff'}
-                numberOfLines={1}
-                onTouchStart={()=> setactive(true)}
-                onEndEditing={()=> setactive(false)}
-            /> */}
-            <Text style={styles.textSearch}># Of Results Per Page</Text>
-            <View style={styles.result}>
-                <Text style={styles.text_index}>{numresult>5?50:numresult*3}</Text>
-                <Text style={[styles.text_item_result]}>result</Text>
-            </View>
-            <Slider
-                value={parseInt(numresult)}
-                onValueChange={(value)=>{
-                    if(value>5){
-                        setnumresult(7)
-                    }else{
-                        setnumresult(value)
-                    }
-                }}
-                minimumValue={1}
-                maximumValue={7}
-                trackStyle={styles.track}
-                thumbStyle={styles.thumb}
-                minimumTrackTintColor='#ff5c01'
-                maximumTrackTintColor="#ffd25f"
-                animationType='timing'
-                step={parseInt(numresult)>4?2:1}
-            />
-            <View style={styles.index}>
-                <View style={styles.index_1}>
-                    {
-                        list.map(dat =>(
-                            <Text style={styles.text_item_result}>{dat}</Text>
-                        ))
-                    }
+            <ScrollView>
+                <LinearTextGradient
+                    style={styles.container_logo}
+                    locations={[0, 1]}
+                    colors={['#FFD25F', '#FF5C01']}
+                    start={{ x: 1, y: 0 }}
+                    end={{ x: 0, y: 0 }}
+                    >
+                    <Text style={styles.text}>LOGO</Text>
+                </LinearTextGradient>
+                <Text style={styles.textSearch}>Search</Text>
+                <TextInput
+                    style={active?[styles.input]:[styles.input,styles.empty_text,styles.empty_border_color]}
+                    onChangeText={setsearch}
+                    value={search}
+                    placeholder="Keyword"
+                    placeholderTextColor={'#fff'}
+                    numberOfLines={1}
+                    onTouchStart={()=> setactive(true)}
+                    onEndEditing={()=> setactive(false)}
+                />
+                {/* <TextInput
+                    style={active?[styles.input]:[styles.input,styles.empty_text,styles.empty_border_color]}
+                    onChangeText={setsearch}
+                    value={search}
+                    placeholder="Keyword"
+                    placeholderTextColor={'#fff'}
+                    numberOfLines={1}
+                    onTouchStart={()=> setactive(true)}
+                    onEndEditing={()=> setactive(false)}
+                /> */}
+                <Text style={styles.textSearch3}># Of Results Per Page</Text>
+                <View style={styles.result}>
+                    <Text style={styles.text_index}>{numresult>5?50:numresult*3}</Text>
+                    <Text style={[styles.text_item_result]}>result</Text>
                 </View>
-                <Text style={styles.text_item_result}>50</Text>
-            </View>
-            <View
-                style={styles.divider}
-            />
-            <TouchableOpacity style={styles.submit} onPress={()=> SubmitSearch()}>
-                <Text style={styles.textSearch2}>SEARCH</Text>
-            </TouchableOpacity>
-            <View style={styles.bottom_bar}>
-                <Image source={images.Union} style={styles.icon_bottom_bar}/>
-                <TouchableOpacity style={{padding:12}} onPress={()=> NavigateTags()}>
-                    <Image source={images.Union} style={styles.icon_bottom_bar2}/>
+                <View style={{marginHorizontal: 20}}>
+                    <Slider
+                        value={parseInt(numresult)}
+                        onValueChange={(value)=>{
+                            if(value>5){
+                                setnumresult(7)
+                            }else{
+                                setnumresult(value)
+                            }
+                        }}
+                        minimumValue={1}
+                        maximumValue={7}
+                        trackStyle={styles.track}
+                        thumbStyle={styles.thumb}
+                        minimumTrackTintColor='#ff5c01'
+                        maximumTrackTintColor="#ffd25f"
+                        animationType='timing'
+                        step={parseInt(numresult)>4?2:1}
+                    />
+                </View>
+                <View style={styles.index_2}>
+                    <View style={styles.index_1}>
+                        {
+                            list.map((dat,index) =>(
+                                <Text style={index>1?[styles.text_item_result,{ marginLeft:10}]:[styles.text_item_result]}>{dat}</Text>
+                            ))
+                        }
+                    </View>
+                    <Text style={styles.text_item_result}>50</Text>
+                </View>
+                <View
+                    style={styles.divider}
+                />
+                <TouchableOpacity onPress={()=> SubmitSearch()}>
+                    <Text style={styles.textSearch2}>SEARCH</Text>
                 </TouchableOpacity>
-            </View>
-        <Modal
-            animationType="fade"
-            visible={modalVisible}
-            transparent={true}
-            onRequestClose={() => {
-                setModalVisible(!modalVisible);
-            }}
-        >
-            <View style={styles.centeredView}>
-                <View style={styles.modalView}>
-                    <ActivityIndicator color={'#fff'} size={80}/>
-                </View>
-            </View>
-        </Modal>
+                <Modal
+                    animationType="fade"
+                    visible={modalVisible}
+                    transparent={true}
+                    onRequestClose={() => {
+                        setModalVisible(!modalVisible);
+                    }}
+                >
+                    <View style={styles.centeredView}>
+                        <View style={styles.modalView}>
+                            <ActivityIndicator color={'#fff'} size={80}/>
+                        </View>
+                    </View>
+                </Modal>
+        </ScrollView>
+        <View style={styles.bottom_bar}>
+            <Image source={images.Union} style={styles.icon_bottom_bar}/>
+            <TouchableOpacity style={{padding:12}} onPress={()=> NavigateTags()}>
+                <Image source={images.Union} style={styles.icon_bottom_bar2}/>
+            </TouchableOpacity>
         </View>
+    </View>
     )
 }
 

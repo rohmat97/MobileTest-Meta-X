@@ -40,6 +40,8 @@ const create = (baseURL = ' https://avl-frontend-exam.herokuapp.com/') => {
 
   const Search = (payload) => api.get(`api/users/all?page=${payload.page}&pageSize=${payload.size}&keyword=${payload.key}`)
   const Tags = ()=> api.get('api/tags')
+  const getFollowers = (payload) => api.get(`api/users/all?page=${payload.page}&pageSize=${payload.size}`)
+  const getFollowing = (payload) => api.get(`api/users/friends?page=${payload.page}&pageSize=${payload.size}`)
   // ------
   // STEP 3
   // ------
@@ -58,7 +60,9 @@ const create = (baseURL = ' https://avl-frontend-exam.herokuapp.com/') => {
     getRate,
     getUser,
     Search,
-    Tags
+    Tags,
+    getFollowers,
+    getFollowing
   }
 }
 
