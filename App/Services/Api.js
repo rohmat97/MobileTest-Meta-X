@@ -2,7 +2,7 @@
 import apisauce from 'apisauce'
 
 // our "constructor"
-const create = (baseURL = 'https://api.github.com/') => {
+const create = (baseURL = ' https://avl-frontend-exam.herokuapp.com/') => {
   // ------
   // STEP 1
   // ------
@@ -38,6 +38,8 @@ const create = (baseURL = 'https://api.github.com/') => {
   const getRate = () => api.get('rate_limit')
   const getUser = (username) => api.get('search/users', {q: username})
 
+  const Search = (payload) => api.get(`api/users/all?page=${payload.page}&pageSize=${payload.size}&keyword=${payload.key}`)
+  const Tags = ()=> api.get('api/tags')
   // ------
   // STEP 3
   // ------
@@ -54,7 +56,9 @@ const create = (baseURL = 'https://api.github.com/') => {
     // a list of the API functions from step 2
     getRoot,
     getRate,
-    getUser
+    getUser,
+    Search,
+    Tags
   }
 }
 
