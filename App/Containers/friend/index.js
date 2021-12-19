@@ -81,7 +81,10 @@ export function FriendPage(props) {
                 // console.log(`distanceFromEnd`, distanceFromEnd)
                 Fetch()
             }}
-            ListEmptyComponent={<View style={{flex:1}}> <ActivityIndicator color={'white'} size={'large'}/></View>}
+            ListEmptyComponent={
+            <View style={{flex:1}}> 
+                <ActivityIndicator color={'white'} size={'large'}/>
+            </View>}
             renderItem={({item})=>{
                 return(
                 <ListItem
